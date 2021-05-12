@@ -156,6 +156,7 @@ void setup() {
     if(Parameters.getWifiMode() == WIFI_MODE_STA){
         //-- Connect to an existing network
         WiFi.mode(WIFI_STA);
+        WiFi.setPhyMode(WIFI_PHY_MODE_11B);
         WiFi.config(Parameters.getWifiStaIP(), Parameters.getWifiStaGateway(), Parameters.getWifiStaSubnet(), 0U, 0U);
         WiFi.begin(Parameters.getWifiStaSsid(), Parameters.getWifiStaPassword());
 
@@ -179,6 +180,7 @@ void setup() {
     if(Parameters.getWifiMode() == WIFI_MODE_AP){
         //-- Start AP
         WiFi.mode(WIFI_AP);
+        WiFi.setPhyMode(WIFI_PHY_MODE_11B);
         WiFi.encryptionType(AUTH_WPA2_PSK);
         WiFi.softAP(Parameters.getWifiSsid(), Parameters.getWifiPassword(), Parameters.getWifiChannel());
         localIP = WiFi.softAPIP();
